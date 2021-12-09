@@ -22,4 +22,4 @@ How to play
     Every time you eat an apple the lenght of the snake will increase.
     If you touch the edge of the map or you "eat" yourself you die.
 
-Authors: @GiacomoL321 and @
+Authors: @GiacomoL02 and @
