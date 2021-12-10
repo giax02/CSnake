@@ -35,6 +35,7 @@ void drawGround(char a[size][size])
     
     for(i = 0; i < size; i++) 
     a[i][size - 1] = (char)186;
+    
     a[0][0] = (char)201; a[0][size - 1] = (char)187; a[size - 1][0] = (char)200; a[size - 1][size - 1] = (char)188;
     
             
