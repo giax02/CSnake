@@ -11,6 +11,11 @@ on the upper left corner and selecting RASTER FONT as the font type and 8x8 as t
 1. Compiling:
     You can easily compile the entire program with any C compiler without the need of any external lib.
     All the project files are provided in the repository.
+    You can clone the repository:
+    
+    ```sh
+   git clone https://github.com/GiacomoL02/CSnake.git
+   ```
     You can compile using:
     
     ```sh
