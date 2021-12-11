@@ -62,4 +62,3 @@ int appleAte(snakechunk a[ssize], token *b);
 void cleanGround(char a[size][size]);
 
 float time_diff(struct timeval *start, struct timeval *end);
-//end
