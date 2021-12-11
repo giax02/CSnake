@@ -1,6 +1,7 @@
 /*
  * Snake in C by Giacomo Leandrini & Gabriele Di Carlo
- * last rev. date: 10/12/2021
+ * last rev. date: 11/12/2021
+ * file: "main.c"
  */
 
 //includo l'header delle funzioni
@@ -40,10 +41,13 @@ int main()
     //scrivo lo snake nel campo alla posizione iniziale
     printSnake(board, snake, &snakeLength);
     //stampo il campo
-    printGround(board);
+    printGround(board, score);
     
     //VARIABILI TEMPO
     time_t moveTime = time(NULL);
+    struct timeval oldT;
+    struct timeval newT;
+    
     //LOOP INFINITO
     while(1)
     {
@@ -55,15 +59,15 @@ int main()
                 if(dirbuffer != dirOpposite(direction))
                     direction = dirbuffer;
             }        
-        //questo if provvede al timing del gioco, ogni SPEED secondi il gioco si aggiorna
-        //l'iter è: moveSnake,printGround,isDead;
-        if(difftime(time(NULL), moveTime) >= speed)
+        //questo if provvede al timing del gioco
+        gettimeofday(&newT, NULL);
+        if(time_diff(&oldT, &newT) >= speed)
         {
-            moveTime = time(NULL);
+            gettimeofday(&oldT, NULL);
             
             moveSnake(snake, direction, board, &snakeLength, increase);
             increase = 0;
-            printGround(board);
+            printGround(board, score);
             cleanGround(board);
             if(appleAte(snake, &apple))
             {
@@ -72,17 +76,13 @@ int main()
                 score++;
                 spawnApple(board, &apple);
             }
-            
-            if(isDead(snake,board))
+            if(isDead(snake, board, &snakeLength))
             {
                 gameOver();
                 printf("Your score is: %d!", score);
-                printf("%d", snakeLength);
                 return 0;
             }
         }
-            
-            
     }
     return 0;
 }
