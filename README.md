@@ -21,5 +21,7 @@ How to play
     Eat all the apples to increase the score.
     Every time you eat an apple the lenght of the snake will increase.
     If you touch the edge of the map or you "eat" yourself you die.
-
-Authors: @GiacomoL02 and @
+    
+WARNING! IT ONLY WORKS OF WINDOWS!
+Authors: @GiacomoL02 and @Gabry-xdvr 
+Link to his version: https://github.com/Gabry-xdvr/Snake

@@ -1,10 +1,15 @@
+/*
+ * Snake in C by Giacomo Leandrini & Gabriele Di Carlo
+ * last rev. date: 11/12/2021
+ * file: "functions.c"
+ */
 #include "functions.h"
 
 void cleanGround(char a[size][size])
 {
-    for(int i = 1; i < size - 2; i++)
+    for(int i = 1; i < size - 1; i++)
         {
-            for(int j = 1; j < size - 2; j++)
+            for(int j = 1; j < size - 1; j++)
             {
                 if(a[j][i] != 'x')
                     a[j][i] = ' ';
@@ -35,7 +40,6 @@ void drawGround(char a[size][size])
     
     for(i = 0; i < size; i++) 
     a[i][size - 1] = (char)186;
-    
     a[0][0] = (char)201; a[0][size - 1] = (char)187; a[size - 1][0] = (char)200; a[size - 1][size - 1] = (char)188;
     
             
@@ -43,7 +47,7 @@ void drawGround(char a[size][size])
     //disegno gli angoli
 }
 
-void printGround(char a[size][size])
+void printGround(char a[size][size], int b)
 {
     system("cls");
     int i, j;
@@ -56,6 +60,7 @@ void printGround(char a[size][size])
         }
         printf("\n");
     }
+    printf("Score: %d", b);
     //disegno la cornice
     //disegno gli angoli
 }
@@ -87,7 +92,7 @@ void moveSnake(snakechunk a[ssize], char dir, char b[size][size], int *c, int in
 {   
 
     //aggiorno la posizone del corpo
-    for(int i = 1; i <= *c - 1; i++)
+    for(int i = *c - 1; i > 0; i--)
     {
             a[i].x = a[i - 1].x;
             a[i].y = a[i - 1].y;
@@ -115,10 +120,15 @@ void moveSnake(snakechunk a[ssize], char dir, char b[size][size], int *c, int in
     printSnake(b, a, c);
 }
 
-int isDead(snakechunk a[ssize], char b[size][size])
+int isDead(snakechunk a[ssize], char b[size][size], int *c)
 {
     if(a[0].x == size - 1 || a[0].x == 0 || a[0].y == 0 || a[0].y == size-1)
         return 1;
+    for(int i = 1; i < *c - 1; i++)
+        {
+            if(a[0].x == a[i].x && a[0].y == a[i].y)
+                return 1;
+        }
     return 0;
 }
 
@@ -162,4 +172,9 @@ int appleAte(snakechunk a[ssize], token *b)
     if(a[0].x == b->x && a[0].y == b->y)
         return 1;
     return 0;
+}
+
+float time_diff(struct timeval *start, struct timeval *end)
+{
+    return (end->tv_sec - start->tv_sec) + 1e-6*(end->tv_usec - start->tv_usec);
 }
