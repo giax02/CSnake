@@ -1,3 +1,9 @@
+/*
+ * Snake in C by Giacomo Leandrini & Gabriele Di Carlo
+ * last rev. date: 11/12/2021
+ * file: "functions.h"
+ */
+
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
@@ -7,7 +13,7 @@
 //definisco delle costanti globali
 #define size 33 //lato del campo da gioco
 #define ssize 64
-#define speed 0.6 //velocità di refresh del gioco
+#define speed 0.3 //velocità di refresh del gioco
 #define startx size/2 //coordinate della posizione iniziale dello snake 
 #define starty size/2
 
@@ -33,13 +39,13 @@ void printSnake(char a[size][size], snakechunk b[ssize], int *c);
 void drawGround(char a[size][size]);
 
 //stampa il campo da gioco al terminale dopo aver cancellato il testo al terminale
-void printGround(char a[size][size]);
+void printGround(char a[size][size], int b);
 
 //muove lo snake a seconda della direzione e lo stampa sulla matrice campo da gioco 
 void moveSnake(snakechunk a[ssize], char dir, char b[size][size], int *c, int inc);
 
 //restituisce 1 se lo snake sarà morto nel prossimo frame
-int isDead(snakechunk a[ssize], char b[size][size]);
+int isDead(snakechunk a[ssize], char b[size][size], int *c);
 
 //cancella il terminale e stampa "Hai perso!"
 void gameOver();
@@ -54,3 +60,6 @@ void spawnApple(char a[size][size], token *b);
 int appleAte(snakechunk a[ssize], token *b);
 
 void cleanGround(char a[size][size]);
+
+float time_diff(struct timeval *start, struct timeval *end);
+//end
