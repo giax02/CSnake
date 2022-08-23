@@ -32,7 +32,7 @@ on the upper left corner and selecting RASTER FONT as the font type and 8x8 as t
     Every time you eat an apple the lenght of the snake will increase.
     If you touch the edge of the map or you "eat" yourself you die.
     
-WARNING! IT ONLY WORKS OF WINDOWS!
+WARNING! IT ONLY WORKS ON WINDOWS!
 
 Authors: @GiacomoL02 and @Gabry-xdvr 
 Link to his version: https://github.com/Gabry-xdvr/Snake
